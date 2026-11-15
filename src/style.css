@@ -592,7 +592,7 @@ body[data-dsh-codex-chrome] .dsc-independent-rail [data-dsc-app-footer-clear-ite
       正文列优先取该值，回退到宿主 --dsh-composer-card-max-width（正文 + 32px）。 */
 body[data-dsh-codex-style] [data-conversation-scroll] [class*="_column"] { max-width: var(--dsc-composer-visual-width, var(--dsh-composer-card-max-width)); }
 /* 公开详情插槽在来源信息后声明；仅在本插件详情用 flex 顺序把来源信息排在支持提示之后。 */
-body[data-dsh-codex-style] [data-plugin-detail="@xinxing1708/dsh-codex-style"] [data-plugin-source] { order: 1; }
+body[data-dsh-codex-style] [data-plugin-detail="@zianyx6/dsh-codex-style-enhanced"] [data-plugin-source] { order: 1; }
 .dsc-plugin-support { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 16px 0; color: #989898; font-size: 13px; line-height: 20px; }
 .dsc-plugin-support p { margin: 0; }
 .dsc-plugin-support a { display: inline-flex; align-items: center; gap: 4px; max-width: 100%; color: #9bc8f8; text-decoration: none; overflow-wrap: anywhere; border-radius: 4px; }

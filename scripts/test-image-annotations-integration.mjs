@@ -17,7 +17,7 @@ const uiSource = await readFile(resolve(root, 'src/image-annotations.js'), 'utf8
 const integrationSource = await readFile(resolve(root, 'src/image-annotations-integration.js'), 'utf8');
 const integrationCss = await readFile(resolve(root, 'src/image-annotations-integration.css'), 'utf8');
 const UI_CSS = '.dsc-ia-test{color:#fff}';
-const PLUGIN_PACKAGE = '@xinxing1708/dsh-codex-style';
+const PLUGIN_PACKAGE = '@zianyx6/dsh-codex-style-enhanced';
 
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 

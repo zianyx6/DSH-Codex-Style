@@ -127,7 +127,7 @@ async function presentationFixture(t) {
   t.after(() => ctx.fiber.dispose());
   const flush = () => new Promise(setImmediate);
   const set = async (header, body, navigation, phase = 'active') => {
-    inventory = [['header', header], ['body', body], ['navigation', navigation]].map(([name, enabled]) => ({ moduleName: '@xinxing1708/dsh-codex-style/' + name, enabled, fiberPhase: enabled ? phase : null }));
+    inventory = [['header', header], ['body', body], ['navigation', navigation]].map(([name, enabled]) => ({ moduleName: '@zianyx6/dsh-codex-style-enhanced/' + name, enabled, fiberPhase: enabled ? phase : null }));
     await events.get('plugin-manager/changed')(); await flush();
     for (const fiber of fibers) await fiber.await();
   };
@@ -165,7 +165,7 @@ test('inventory errors and stale replies leave core effects mounted and optional
   const refresh = f.events.get('plugin-manager/changed');
   const old = refresh(), latest = refresh();
   replies[1]({ ok: true, value: { entries: [] } }); await latest;
-  replies[0]({ ok: true, value: { entries: ['header', 'body', 'navigation'].map(name => ({ moduleName: '@xinxing1708/dsh-codex-style/' + name, enabled: true, fiberPhase: 'active' })) } }); await old; await f.flush();
+  replies[0]({ ok: true, value: { entries: ['header', 'body', 'navigation'].map(name => ({ moduleName: '@zianyx6/dsh-codex-style-enhanced/' + name, enabled: true, fiberPhase: 'active' })) } }); await old; await f.flush();
   assert.deepEqual(f.state(), { header: true, body: true, navigation: false, headerStore: true, styles: 2, slots: 1 });
 });
 

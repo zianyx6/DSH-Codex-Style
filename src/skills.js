@@ -1,7 +1,7 @@
 // 技能页：直接消费本插件 Host 半提供的 codexStyleSkills 只读目录/正文，不复制宿主技能数据。
 // 页面只新增“展示 + 导航 + 草稿初始化”，不提供启停、卸载、安装或 frontmatter 编辑。
 const SKILLS_PANEL_ID = 'codex-style-skills';
-const SKILLS_PACKAGE = '@xinxing1708/dsh-codex-style';
+const SKILLS_PACKAGE = '@zianyx6/dsh-codex-style-enhanced';
 const SKILLS_PAGE_SIZE = 6;
 
 const SKILL_SOURCE_GROUPS = [

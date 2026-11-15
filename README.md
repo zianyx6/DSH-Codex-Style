@@ -1,83 +1,99 @@
-# DSH Codex Style
+# DSH Codex Style Enhanced
 
-为 **DeepSeek Harness（DSH）** 提供 Codex 桌面端风格的深浅色主题。在 DSH 外观设置选择浅色或深色即可切换；选择跟随系统时，主题也跟随系统变化。
+> 为 **DeepSeek Harness（DSH）** 提供 Codex 桌面端风格界面的**社区增强版**：在原版基础上内置 30 套主题包、可调外观与个人主页。
+>
+> 本项目是 [xinxing1708/DSH-Codex-Style](https://github.com/xinxing1708/DSH-Codex-Style) 的独立社区 Fork，**由社区独立维护，不代表上游原作者立场，也未获得上游或 DeepSeek 的背书**。
 
-当前版本 **0.2.9**，为功能与界面重构版（0.2.9 补上 Remote 远程工作台的兼容层）：新增 dsh-theme 30 套主题包与「设置 → 外观」（模式 / 预设 / 三色 / 字体 / 密度 / 侧栏宽度）、Codex 风格个人页，并完成一轮界面令牌化重构；同时修复新对话时项目栏压住输入框（#3）。兼容范围不变。
+![首页](assets/screenshots/01-home.png)
 
-**范围内允许加载，不等于该版本的原生界面已经实测**：新的 0.2.x 仍可能带来界面变化，升级后如遇布局或控件异常，按「更新与恢复」处理。本版在 DSH 0.2.2-rc.1 宿主资源下完成 225 项自动检查与顶部/齿轮菜单隔离验证；最后一批修复未安装到日常 DSH，完整窗口未新增验收；其他 0.2.x 未逐版实机复测。
+## 与原版的关系
+
+| | 原版 `@xinxing1708/dsh-codex-style` | 增强版 `@zianyx6/dsh-codex-style-enhanced` |
+|---|---|---|
+| 定位 | 简洁的 Codex 风格界面 | 在 Codex 风格上扩展主题、外观与个人主页 |
+| 主题 | 深浅色两套 | 深浅色 + 内置 dsh-theme 30 套配色 + 11 个 Codex 风格预设 |
+| 外观设置 | 无独立页面 | 设置 → 外观：模式 / 预设 / 强调色 / 背景 / 前景 / 字体 / 密度 / 侧栏宽度 |
+| 个人主页 | 无 | 齿轮菜单「个人」：账号余额、会话统计、活动热力图、用量入口 |
+| 安装包名 | 原包名 | 独立包名与安装目录，**不会覆盖原版** |
+| 设置数据 | `dsh-codex-style:*` | 沿用同一套键，迁移不丢设置 |
+| 来源 | 上游维护 | 保留上游全部 MIT 代码与署名，追加内容同样开源 |
+
+两版**互斥**：请只启用其中一个。从原版迁移的步骤见下文。
 
 ## 功能
 
-0.2.7 新增主题包、外观设置与个人页，并完成外壳令牌化与密度调整；下列功能说明在 0.2.5 基础上补充。该版新增随 DSH 浅色、深色和系统设置切换的主题，图片批注 UI 同步适配；更新新版 Codex 深色配色、输入框等待环及外框圆角，并修复回合收起后过程自述残留。正文效果、顶部重绘现并入主界面，取消这两个独立开关；旧版保存的关闭状态不再控制它们，其余可选子模块的默认值和已有选择保留。
+- **主题界面**：Codex 风格的导航、可收起侧栏和输入区；项目/会话搜索与管理、模型和权限选择、思考强度滑条与 MAX 动效、运行/完成提示。
+- **浅色 / 深色**：随 DSH 外观设置切换；选择跟随系统时同步系统变化。
+- **内置主题包**：来自 [dsh-theme](https://github.com/mux9056-bot/dsh-theme) 的 30 套配色（Apache-2.0），无需再装第三个插件。
+- **设置 → 外观**：模式（浅色/深色/跟随系统）、Codex 风格预设（Rose Pine / Nord / Solarized / Tokyo Night / Gruvbox / Catppuccin / Dracula / One Dark / GitHub 等）、强调色/背景/前景、字体、界面密度、侧栏宽度；「DeepSeek 默认」作为默认预设项。
+- **个人主页**：账号昵称、充值/赠送余额、会话总数、活跃与连续天数、近 12 个月会话活动热力图，以及 Token 消耗 / 使用峰值 / 任务用时 / 消费金额（后四项由平台统计，页面提供平台用量页入口，不推算金额）。
+- **Remote 兼容层**：`dsh-remote` 的 IDE 工作台从一级导航右侧开始，顶栏/文件树/编辑器表面与主题一致，弹窗层级高于本插件浮层。
+- **正文效果**：回合耗时、过程收起、流式平滑、工具调用状态与完整 Markdown/代码块。
+- **可选组件**：Codex 工作规范提示词（默认关闭）、页面前进后退（默认开启）、图片批注（默认开启）。
 
-- **主题界面（主模块）**：Codex 风格的导航、可收起侧栏和输入区，支持项目/会话搜索与管理、模型和权限选择、思考强度滑条与 MAX 动效、会话运行/完成提示，以及齿轮菜单中宿主公开第三方入口（如 Remote）的独立分组呈现。浅色采用白色主区、输入框和浮层，权限保留暖色，白色思考滑块加蓝边；深色保留现有配色。图片批注界面同步切换，图片与手绘颜色保持原色。自研插件检查/下载/安装已退役，插件版本更新改用 DSH 原生插件市场/插件页；DSH 有新版时，左下角齿轮上方仍显示蓝色本体更新按钮，悬停可看下载进度，下载和安装由 DSH 完成。保留 DSH 原生编辑器、附件、工具调用与审批流程。
+## 截图
 
-- **外观设置（自定义 → 设置 → 外观，主模块内置）**：把主题选择从齿轮菜单搬进设置里新增的「外观」一栏，齿轮菜单的「外观」直达该页。页内提供：模式（浅色 / 深色 / 跟随系统）、Codex 风格预设（Rose Pine、Rose Pine Moon、Nord、Solarized、Tokyo Night、Gruvbox、Catppuccin、Dracula、One Dark、GitHub，以及「DeepSeek 默认」）、强调色 / 背景 / 前景三色自定、字体（系统 / Inter / Serif / 等宽）。预设只给三元组，其余界面令牌按明暗推导；选择存本地，重启后恢复。同时内置社区主题包 [dsh-theme](https://github.com/mux9056-bot/dsh-theme) 的 30 套配色（Apache-2.0，来源见 THIRD_PARTY_NOTICES.md），按「主题包」分组列出，无需再单独安装第三个插件。
-
-- **个人主页（rail「个人」，主模块内置）**：Codex 个人资料页样式，展示账号昵称与 ID、充值/赠送余额、会话总数、活跃与连续天数、近 12 个月会话活动热力图、最近会话表和项目洞察。数据只来自宿主公开接口（账号资料/钱包）与本地会话目录；Token 用量与消费明细由 DeepSeek 平台统计，页面给出「打开平台用量页」，不展示推算金额。
-
-- **Codex 风格工作规范（可选子模块，默认关闭）**：额外加入工作规范提示词，引导模型明确任务边界、减少额外改动、区分审查与执行、持续中文沟通并按证据交付。用户原有的 `AGENTS.md` 继续生效，不会被替换或改写；实际效果取决于模型遵循。
-
-  开关支持热生效，作用于后续模型请求；如 DSH 提示需要重启，请重启后使用。关闭不会撤回已发送到模型的提示词，也不会回滚同一对话已产生的内容；正在进行的请求不受影响，切换后建议新建对话。
-
-- **Codex 正文效果（主模块内置）**：显示每轮顶部「已处理」耗时和分割线，增加操作流光、步骤展开动效及铅笔、终端和图像图标；展开箭头悬停时显示。正文流式输出按段落顺序平滑揭示，不再整段突然出现，流结束时按固定速率补齐；引用、复杂列表和含行内标记的段落改为整块淡入。思考不显示前导图标，实时思考内容隐藏，完成后仍可展开查看。成功完成的回合收起时，过程自述随工具和思考一起隐藏，最终回答保留，展开后恢复。随主模块启停，无独立开关。
-
-- **Codex 顶部重绘（主模块内置）**：会话顶部采用标题与右侧工具在上、模式/智能体/后台任务与视图切换在下的布局；「对话 / 轨迹」以及宿主 `conversation.view` 注册的第三方视图共用白色滑块胶囊。胶囊按 header 可用宽度自然增减，放不下的固定项进入宿主「更多会话视图」，长标签省略；窄窗时胶囊可独立一行，不覆盖左侧按钮。保留宿主的注册、排序、固定/取消固定、选中与卸载语义，更多视图使用四格图标。随主模块启停，无独立开关。第三方接入说明见仓库开发文档 `codex-style/docs/conversation-view-integration.md`。
-
-- **页面前进后退（可选子模块，默认开启）**：在窗口左上角增加后退、前进按钮，按本次运行的内存历史切换最近打开的会话与全局面板，支持 Ctrl+[ / Ctrl+]。这不是 DSH 原生能力：历史只在本次运行内存中，重启后清空，不恢复设置弹窗、页面内部状态或滚动位置。与顶部重绘、正文效果独立，需同时开启主模块；关闭后移除按钮与快捷键，原有侧栏切换按钮恢复原位。
-
-- **图片批注（可选子模块，默认开启）**：点击待发或正文图片打开大预览，支持点评论、编辑/删除和手绘标注。「完成批注」保存并返回正文；图片旁的「N 条批注 ×」胶囊可重开或清除本图评论。批注随图片进入模型请求，坐标文本不占用正文或编辑器；历史图片批注加入下一次草稿，不自动发送。需同时开启主模块，关闭后恢复原生图片界面。
-
-- **技能页（自定义 → 技能，主模块内）**：只读展示当前会话作用范围下的 DSH 技能，按来源分组，支持搜索、刷新、展开全部和详情正文预览；可打开技能文件、在资源管理器中显示或复制 Markdown。 「立即试用」会新建对话并填入 `/技能名 ` 草稿，不自动发送；没有真实文件路径的技能不显示打开/定位项，也不提供技能启停、卸载或在线安装。
-
-在「自定义 → 插件 → 本插件详情 → 包含的组件」可分别管理工作规范、页面前进后退和图片批注；正文效果与顶部重绘不再列为独立组件。可选子模块的默认开关以本包 `cordis.patch.yml` 为准，升级时保留用户已经保存的选择。旧 `/body`、`/header` 空入口仅作兼容保留，不再控制呈现。
+| | |
+|---|---|
+| ![正文](assets/screenshots/03-body-style.png) | ![悬停](assets/screenshots/04-sidebar-hover.png) |
+| ![图片批注](assets/screenshots/06-image-annotation.png) | ![推理强度](assets/screenshots/05-reasoning.png) |
 
 ## 安装
 
-在 DSH「自定义 → 插件 → 添加插件」中输入 `@xinxing1708/dsh-codex-style`；也可从 [发行页面](https://github.com/xinxing1708/DSH-Codex-Style/releases/tag/v0.2.9) 下载 Windows ZIP，退出 DSH 后运行 `install.cmd`（需要 Node.js 20+），完成后重新启动 DSH。
+### 方式一：DSH 插件页
 
-版本准入与宿主同语义、不同实现：宿主用 `semver.satisfies(version, engines.dsh, { includePrerelease: true })` 判定，而安装器运行在用户机器上，拿不到宿主 `app.asar` 里的 semver，因此内置一个只覆盖本插件声明所需写法的严格范围比较器（`>=` 下界、`<` 上界、`||` 精确列表）。遇到 `^`、`~`、`<=`、`>`、`*` 等未支持写法会直接报错，不会静默放行。自动测试会用宿主 `app.asar` 内的真实 semver 逐版本对照安装器判定，避免两套逻辑漂移。
+在 DSH「自定义 → 插件 → 添加插件」中输入增强版包名 `@zianyx6/dsh-codex-style-enhanced`（发布后可用），或从 [Releases](https://github.com/zianyx6/DSH-Codex-Style/releases) 下载 ZIP。
 
-插件版本更新改用 DSH 原生插件市场/插件页；当前 `link:` 安装不显示宿主原生版本区，日常 profile 不迁移，由用户后续按市场「换用线上版本」流程处理。源码构建运行 `npm run build`，版本变更见 [更新记录](CHANGELOG.md)。
+### 方式二：Windows ZIP（推荐）
 
-检测到 DSH Desktop 社区版时，`install.cmd` 会说明它不是 DeepSeek 官方版、效果可能一般；真实 runtime 符合支持版本时可在警告后继续安装，版本准入不放宽。安装记录仅保存宿主路径和版本等环境信息，用于区分实际运行的官方版与社区版。社区版中主插件每次激活会在右下角提醒一次，6 秒后自动消失；官方版不提醒，子组件开关不单独提醒。社区版的完整界面兼容性尚未实机验证。
+1. 从 [Releases](https://github.com/zianyx6/DSH-Codex-Style/releases) 下载 `dsh-codex-style-enhanced-*.zip`；
+2. **完全退出 DSH**；
+3. 解压后运行 `install.cmd`（需要 Node.js 20+）；
+4. 重新启动 DSH。
 
-## 更新与恢复
+安装器会写入独立受管目录 `dsh-codex-style-enhanced/`（原版使用 `dsh-codex-style/`），检测到原版已安装时会停止并提示先卸载原版。
 
-**已用 registry 规格安装**（profile 里记录版本号，如 `0.2.4`）：插件即使被宿主判为不兼容而暂时禁用，仍可在「自定义 → 插件 → 本插件详情」用宿主自带的检查/安装入口升级。前提是**已经存在兼容当前 DSH 的新版本**——发布方把当前 DSH 版本纳入 `engines.dsh` 并发布。这条路径不依赖插件自己的界面。
+## 从原版迁移
 
-**当前是 `link:` 本地安装**（开发工作区或本机链接安装）：在插件市场「已安装」列表里找到该条目，打开 `···` 菜单 →「换用线上版本」。注意这是**更换安装来源**（把本地链接换成 npm 版本），不是普通版本更新：安装前先备份 profile 的 `package.json` 与 `pnpm-lock.yaml`，`~/.dsh/dsh-codex-style/` 下的旧版本目录保留，便于回滚。
+1. 记下你需要的设置（通常无需操作，增强版沿用 `dsh-codex-style:*` 本地存储键）；
+2. 在 DSH 插件页卸载原版 `@xinxing1708/dsh-codex-style`，退出 DSH；
+3. 按上面的方式安装增强版并重启；
+4. 主题、外观、侧栏宽度等设置会自动沿用；如未生效，在设置 → 外观里重新选择一次即可。
 
-**自研「检查更新 / 立即安装」已退役**：插件更新统一走 DSH 原生插件市场/插件页，宿主是否加载本插件客户端不影响更新入口；DSH 本体更新仍由齿轮上方蓝圆入口转交宿主。
+## 更新与回滚
 
-安装失败后，宿主只保证 profile 的 `package.json`、锁文件等**文件层面**回到可用状态，不保证 `node_modules` 完整回滚。回滚后请核对插件是否仍为原版本、能否正常加载，再决定重试。
+- **更新**：插件页更新，或下载新 ZIP 覆盖安装（安装器保留旧版本与回滚记录）。
+- **回滚**：`install.cmd` 安装的版本可用 `scripts/rollback.mjs`（安装器会打印用法）回退到上一版；插件页安装的版本可用 DSH 插件页卸载后重装旧版。
+- **卸载**：插件页卸载即可；`install.cmd` 安装的版本会清理自己写入的 profile 条目，不影响原版或用户配置。
 
-## 效果预览
+## 兼容性
 
-新对话首页效果<img width="1911" height="1224" alt="image" src="https://github.com/user-attachments/assets/690fd8cb-3973-46f5-a3a8-46d516b98379" />
-搭配提示词注入后的deepseek v4.1 flash 1017任务过程效果<img width="1918" height="1222" alt="image" src="https://github.com/user-attachments/assets/23d6e604-c6ef-4c00-b2d5-d81b1995bbfb" />
-codex正文风格打开后样式<img width="1910" height="1222" alt="image" src="https://github.com/user-attachments/assets/0f40145d-87f9-4e9b-8317-e56caa4d7561" />
-侧边栏收起后鼠标悬停在导航栏图标时悬浮卡片效果<img width="1905" height="1224" alt="image" src="https://github.com/user-attachments/assets/86a2e1a6-2e4b-4cd3-ab8a-68791cf1d16c" />
-模型思考强度选择效果<img width="1909" height="1215" alt="image" src="https://github.com/user-attachments/assets/191614b4-3716-4213-bb94-1c18ae919b5f" />
-<img width="1899" height="1222" alt="image" src="https://github.com/user-attachments/assets/d70dd2c6-d8a5-4838-854a-87e5a72bc247" />
+- DSH：`>=0.2.1-rc.2 <0.3.0-0`（与原版一致；0.3.0 及更高版本拒绝加载）。
+- Node.js：>= 20（仅安装器需要）。
+- 平台：Windows 优先（安装器面向 Windows），Web/桌面客户端均可加载。
+- 已知问题：主题包与个人页依赖 DSH 的公开槽位与 `data-*` 标记；宿主大版本升级后可能需要适配，见 [维护文档](docs/maintenance/)。
 
-可选的图片批注功能，打开后，在聊天框内复制粘贴图片后，单击图片，可以发送批注<img width="1903" height="1216" alt="image" src="https://github.com/user-attachments/assets/25d7205a-87e7-493c-8f43-599358a4c028" />
-<img width="1905" height="1214" alt="image" src="https://github.com/user-attachments/assets/41ea7c4f-0dea-4d09-a2ef-dcafb9b5908e" />
+## 第三方与许可
 
+- 本项目代码：MIT，见 `LICENSE`。
+- 上游 [DSH-Codex-Style](https://github.com/xinxing1708/DSH-Codex-Style)：MIT，保留其代码、CHANGELOG 历史与署名。
+- 主题包数据：[dsh-theme](https://github.com/mux9056-bot/dsh-theme) 1.0.1，Apache-2.0，见 `licenses/dsh-theme-LICENSE`。
+- DSH 品牌图：DeepSeek Harness 项目，MIT，见 `licenses/DeepSeek-Harness-LICENSE`。
+- 完整说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
+## 开发与贡献
 
-## 开发验证
+```bash
+node scripts/build.mjs                     # 构建 lib/client.js
+node --test --test-isolation=none scripts/test-client.mjs   # 示例：单文件测试
+```
 
-首次检出运行 `npm ci`，修改源码后执行 `npm run build`，再运行 `npm test`。测试使用临时 profile 检查安装、更新和回退，不改日常 DSH 配置。
+- 设计令牌在 `assets/tokens.css`，页面样式在 `src/*.css`，组件逻辑在 `src/*.js`。
+- 维护策略（分支、版本、上游修复选择性同步）见 [docs/maintenance/02-versioning.md](docs/maintenance/02-versioning.md) 与 [03-upstream-sync.md](docs/maintenance/03-upstream-sync.md)。
+- 提交前请运行构建与测试；涉及界面改动请附截图。
 
-## 发布前检查
+## 致谢
 
-- 确认 npm `latest` 的 `engines.dsh` 覆盖当前主推的 DSH 版本。
-- 范围内（0.2.x，含预发布）新增版本**不需要**逐版改 `engines` 重发；0.3 线属于范围外，先在开发树核对适配、把上限调整到新的 0.3.x 范围并重发，再让用户升级到该大版本。
-- 范围只表示「允许加载」，不表示每个版本都已实测；实际界面行为按 DSH 版本验证后记录到 [更新记录](CHANGELOG.md)。
-
-## 许可与致谢
-
-自研代码使用 [MIT License](LICENSE)。感谢项目贡献者及 `yuehuawu416-cmyk` 的修复，品牌素材说明见 [第三方说明](THIRD_PARTY_NOTICES.md)。
-
-本项目为社区独立插件，与 OpenAI 或 DeepSeek 无关联，未获其赞助或背书。
+- 上游作者 [@xinxing1708](https://github.com/xinxing1708) 与 [DSH-Codex-Style](https://github.com/xinxing1708/DSH-Codex-Style) 的全部基础工作；
+- [dsh-theme](https://github.com/mux9056-bot/dsh-theme) 主题数据；
+- DeepSeek Harness 项目与其 UI 契约。

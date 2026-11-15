@@ -1,7 +1,7 @@
 {
-  "name": "@xinxing1708/dsh-codex-style",
-  "version": "0.2.9",
-  "description": "随 DSH 深浅色配置切换的 Codex 风格界面插件",
+  "name": "@zianyx6/dsh-codex-style-enhanced",
+  "version": "1.0.0",
+  "description": "DSH Codex Style Enhanced —— 在 Codex 风格基础上扩展主题包、外观设置与个人主页的社区增强版",
   "type": "module",
   "main": "lib/host.js",
   "exports": {
@@ -21,7 +21,7 @@
   },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node --test scripts/test-install.mjs scripts/test-client.mjs scripts/test-theme.mjs scripts/test-header-tabs.mjs scripts/test-skills.mjs scripts/test-image-annotations.mjs scripts/test-image-annotations-host.mjs scripts/test-image-annotations-integration.mjs scripts/test-navigation.mjs scripts/test-host-signatures.mjs scripts/test-community-environment.mjs scripts/test-retirement.mjs scripts/test-theme-pack.mjs scripts/test-appearance.mjs scripts/test-profile.mjs scripts/test-hero-composer.mjs scripts/test-remote-compat.mjs"
+    "test": "node --test scripts/test-install.mjs scripts/test-client.mjs scripts/test-theme.mjs scripts/test-header-tabs.mjs scripts/test-skills.mjs scripts/test-image-annotations.mjs scripts/test-image-annotations-host.mjs scripts/test-image-annotations-integration.mjs scripts/test-navigation.mjs scripts/test-host-signatures.mjs scripts/test-community-environment.mjs scripts/test-retirement.mjs scripts/test-theme-pack.mjs scripts/test-appearance.mjs scripts/test-profile.mjs scripts/test-hero-composer.mjs scripts/test-remote-compat.mjs scripts/test-identity.mjs"
   },
   "files": [
     "lib",
@@ -65,11 +65,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xinxing1708/DSH-Codex-Style.git"
+    "url": "git+https://github.com/zianyx6/DSH-Codex-Style.git"
   },
-  "homepage": "https://github.com/xinxing1708/DSH-Codex-Style#readme",
+  "homepage": "https://github.com/zianyx6/DSH-Codex-Style#readme",
   "bugs": {
-    "url": "https://github.com/xinxing1708/DSH-Codex-Style/issues"
+    "url": "https://github.com/zianyx6/DSH-Codex-Style/issues"
   },
   "engines": {
     "node": ">=20",

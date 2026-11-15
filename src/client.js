@@ -35,7 +35,7 @@ function PluginSupportSection({ subject }) {
   if (subject?.kind !== 'bundle' || subject.pkg?.name !== PLUGIN_PACKAGE) return null;
   return h('aside', { className: 'dsc-plugin-support', 'aria-label': '支持插件开发' },
     h('p', null, '如果您认为插件使用体验不错，可以到github点一颗star支持我'),
-    h('a', { href: 'https://github.com/xinxing1708/DSH-Codex-Style', target: '_blank', rel: 'noopener noreferrer' },
+    h('a', { href: 'https://github.com/zianyx6/DSH-Codex-Style', target: '_blank', rel: 'noopener noreferrer' },
       'GitHub · xinxing1708/DSH-Codex-Style', h(Icon, { name: 'arrowUpRight', size: 14 })));
 }
 // 以页面时间轴零点对齐，错开开始、等待恢复和重新挂载的运行圈保持同一转角。

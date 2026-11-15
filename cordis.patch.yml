@@ -1,12 +1,12 @@
 - insert:
     - id: ui-skin-codex-style
-      name: '@xinxing1708/dsh-codex-style'
+      name: '@zianyx6/dsh-codex-style-enhanced'
     - id: codex-style-work-guidelines
-      name: '@xinxing1708/dsh-codex-style/behavior'
+      name: '@zianyx6/dsh-codex-style-enhanced/behavior'
       disabled: true
     - id: codex-style-navigation
-      name: '@xinxing1708/dsh-codex-style/navigation'
+      name: '@zianyx6/dsh-codex-style-enhanced/navigation'
       disabled: false
     - id: codex-style-image-annotations
-      name: '@xinxing1708/dsh-codex-style/image-annotations'
+      name: '@zianyx6/dsh-codex-style-enhanced/image-annotations'
       disabled: false
