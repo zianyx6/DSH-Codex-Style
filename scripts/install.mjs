@@ -148,7 +148,7 @@ if (!isSupportedRuntime(runtime.desktopVersion)) throw new Error(`DSH 版本不�
 // 安装目标身份：注册表/默认目录/旧目录可知官方性；显式 runtime 文件没有可核实宿主身份，不臆测。
 const selectedOfficial = selectedHost ? selectedHost.official === true : null;
 const installRoot = selectedHost?.location ? resolve(selectedHost.location) : installRootOf(runtimePath);
-const installEnvironmentPath = resolve(dshRoot, 'dsh-codex-style', 'install-environment.json');
+const installEnvironmentPath = resolve(dshRoot, 'dsh-codex-style-enhanced', 'install-environment.json');
 const installEnvironment = {
   schemaVersion: 1,
   writtenAt: new Date().toISOString(),
@@ -173,8 +173,8 @@ if (thirdParty.length && selectedOfficial !== false && process.env.DSH_CODEX_STY
   if (answer.trim().toLowerCase() !== 'y') throw new Error('已取消，未作任何修改。');
 }
 const stamp = new Date().toISOString().replace(/[:.]/g, '-');
-const target = resolve(dshRoot, 'dsh-codex-style', manifest.version + '-' + stamp);
-const backup = resolve(dshRoot, 'codex-style-backups', stamp);
+const target = resolve(dshRoot, 'dsh-codex-style-enhanced', manifest.version + '-' + stamp);
+const backup = resolve(dshRoot, 'codex-style-enhanced-backups', stamp);
 const packagePath = resolve(profile, 'package.json');
 const patchPath = resolve(profile, 'cordis.patch.yml');
 const lockPath = resolve(profile, 'pnpm-lock.yaml');
@@ -187,12 +187,20 @@ catch (error) { if (error.code !== 'ENOENT') throw error; }
 const config = JSON.parse(originals[0].bytes.toString());
 config.dependencies ??= {};
 if (!Array.isArray(config.dsh?.profile?.bundles)) throw new Error('未识别 desktop profile 的插件列表；未改 profile。');
-const legacyName = 'dsh-codex-style';
+// 增强版与原版互斥：发现原版安装时中止，避免覆盖或重复挂载。
+const originalPackage = '@xinxing1708/dsh-codex-style';
+{
+  const originalDependency = config.dependencies?.[originalPackage];
+  const originalLink = await lstat(resolve(profile, 'node_modules', originalPackage)).catch(error => { if (error.code === 'ENOENT') return null; throw error; });
+  if (originalDependency || originalLink) {
+    throw new Error('检测到原版 ' + originalPackage + ' 已安装。增强版与原版不能同时启用，请先在 DSH 插件页卸载原版，再安装增强版。');
+  }
+}
 let previousTarget;
 let previousName;
 let previousLinkPath;
 // 仅迁移本安装器管理的旧包；npm 上的同名第三方包不能按版本号认领。
-for (const name of new Set([manifest.name, legacyName])) {
+for (const name of new Set([manifest.name])) {
   const candidatePath = resolve(profile, 'node_modules', name);
   const previousDependency = config.dependencies?.[name];
   const previousLink = await lstat(candidatePath).catch(e => { if (e.code === 'ENOENT') return null; throw e; });
@@ -200,7 +208,7 @@ for (const name of new Set([manifest.name, legacyName])) {
   if (!previousDependency) throw new Error('node_modules 中已存在同名路径，停止以免覆盖：' + name);
   if (!previousDependency.startsWith('link:') || !previousLink?.isSymbolicLink()) throw new Error('同名安装不是本插件的本地链接，请人工核对。');
   const candidateTarget = await realpath(candidatePath);
-  const managedRelative = relative(resolve(dshRoot, 'dsh-codex-style'), candidateTarget);
+  const managedRelative = relative(resolve(dshRoot, 'dsh-codex-style-enhanced'), candidateTarget);
   if (!managedRelative || managedRelative.startsWith('..') || isAbsolute(managedRelative) || resolve(profile, previousDependency.slice(5)) !== resolve(candidateTarget)) throw new Error('现有插件链接不在受管理目录，停止升级。');
   const previousManifest = JSON.parse(await readFile(resolve(candidateTarget, 'package.json'), 'utf8'));
   if (previousManifest.name !== name) throw new Error('旧插件身份不匹配');
