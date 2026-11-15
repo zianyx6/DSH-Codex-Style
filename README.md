@@ -33,10 +33,11 @@
 
 ## 截图
 
-| | |
+| 首页 | 个人主页 |
 |---|---|
-| ![正文](assets/screenshots/03-body-style.png) | ![悬停](assets/screenshots/04-sidebar-hover.png) |
-| ![图片批注](assets/screenshots/06-image-annotation.png) | ![推理强度](assets/screenshots/05-reasoning.png) |
+| ![首页](assets/screenshots/01-home.png) | ![个人主页](assets/screenshots/02-profile.png) |
+| **设置 → 外观 · 模式与界面** | **设置 → 外观 · 主题与主题包** |
+| ![外观界面](assets/screenshots/04-appearance.png) | ![主题包](assets/screenshots/03-appearance-themes.png) |
 
 ## 安装
 
