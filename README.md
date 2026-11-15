@@ -33,11 +33,17 @@
 
 ## 截图
 
-| 首页 | 个人主页 |
-|---|---|
-| ![首页](assets/screenshots/01-home.png) | ![个人主页](assets/screenshots/02-profile.png) |
-| **设置 → 外观 · 模式与界面** | **设置 → 外观 · 主题与主题包** |
-| ![外观界面](assets/screenshots/04-appearance.png) | ![主题包](assets/screenshots/03-appearance-themes.png) |
+<p align="center">
+  <img src="assets/screenshots/01-home.png" width="48%" alt="首页：新对话" />
+  <img src="assets/screenshots/02-profile.png" width="48%" alt="个人主页" />
+</p>
+<p align="center"><sub>左：首页（新对话）　右：个人主页</sub></p>
+
+<p align="center">
+  <img src="assets/screenshots/04-appearance.png" width="48%" alt="设置 → 外观：模式与界面" />
+  <img src="assets/screenshots/03-appearance-themes.png" width="48%" alt="设置 → 外观：主题与主题包" />
+</p>
+<p align="center"><sub>左：外观 — 模式 / 界面密度 / 侧栏宽度　右：外观 — 预设与 30 套主题包</sub></p>
 
 ## 安装
 
