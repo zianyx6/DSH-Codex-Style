@@ -1,24 +1,18 @@
 # DSH Codex Style Enhanced
 
-> 为 **DeepSeek Harness（DSH）** 提供 Codex 桌面端风格界面的**社区增强版**：在原版基础上内置 30 套主题包、可调外观与个人主页。
->
-> 本项目是 [xinxing1708/DSH-Codex-Style](https://github.com/xinxing1708/DSH-Codex-Style) 的独立社区 Fork，**由社区独立维护，不代表上游原作者立场，也未获得上游或 DeepSeek 的背书**。
+> 面向 DeepSeek Harness（DSH）的独立开源界面增强插件，以 Codex 桌面端风格为基础，提供更完整的外观定制、个人主页与工作台体验。
+
+[下载最新版](https://github.com/zianyx6/DSH-Codex-Style/releases) · [问题反馈](https://github.com/zianyx6/DSH-Codex-Style/issues) · [更新日志](CHANGELOG.md)
 
 ![首页](assets/screenshots/01-home.png)
 
-## 与原版的关系
+## 项目定位
 
-| | 原版 `@xinxing1708/dsh-codex-style` | 增强版 `@zianyx6/dsh-codex-style-enhanced` |
-|---|---|---|
-| 定位 | 简洁的 Codex 风格界面 | 在 Codex 风格上扩展主题、外观与个人主页 |
-| 主题 | 深浅色两套 | 深浅色 + 内置 dsh-theme 30 套配色 + 11 个 Codex 风格预设 |
-| 外观设置 | 无独立页面 | 设置 → 外观：模式 / 预设 / 强调色 / 背景 / 前景 / 字体 / 密度 / 侧栏宽度 |
-| 个人主页 | 无 | 齿轮菜单「个人」：账号余额、会话统计、活动热力图、用量入口 |
-| 安装包名 | 原包名 | 独立包名与安装目录，**不会覆盖原版** |
-| 设置数据 | `dsh-codex-style:*` | 沿用同一套键，迁移不丢设置 |
-| 来源 | 上游维护 | 保留上游全部 MIT 代码与署名，追加内容同样开源 |
+DSH Codex Style Enhanced 由 [@zianyx6](https://github.com/zianyx6) 独立开发与维护。自 1.0.0 起，采用独立的插件标识、安装目录、版本规划与发布流程，后续功能开发和问题处理均由本项目负责。
 
-两版**互斥**：请只启用其中一个。从原版迁移的步骤见下文。
+项目注重桌面端交互体验、视觉一致性与个性化配置，在保留 Codex 风格的基础上，提供 30 套主题配色、细粒度外观设置、个人主页及 Remote 工作台适配。
+
+本项目并非 DeepSeek 或 OpenAI 官方产品。历史代码来源及第三方许可见文末；原项目作者不参与本项目的维护，也不负责本项目的技术支持。
 
 ## 功能
 
@@ -58,9 +52,9 @@
 3. 解压后运行 `install.cmd`（需要 Node.js 20+）；
 4. 重新启动 DSH。
 
-安装器会写入独立受管目录 `dsh-codex-style-enhanced/`（原版使用 `dsh-codex-style/`），检测到原版已安装时会停止并提示先卸载原版。
+两个插件不可同时启用。安装器会写入独立受管目录 `dsh-codex-style-enhanced/`（原版使用 `dsh-codex-style/`），检测到原版已安装时会停止并提示先卸载原版。
 
-## 从原版迁移
+## 从旧版 Codex Style 迁移
 
 1. 记下你需要的设置（通常无需操作，增强版沿用 `dsh-codex-style:*` 本地存储键）；
 2. 在 DSH 插件页卸载原版 `@xinxing1708/dsh-codex-style`，退出 DSH；
@@ -75,15 +69,15 @@
 
 ## 兼容性
 
-- DSH：`>=0.2.1-rc.2 <0.3.0-0`（与原版一致；0.3.0 及更高版本拒绝加载）。
+- DSH：`>=0.2.1-rc.2 <0.3.0-0`（0.3.0 及更高版本拒绝加载）。
 - Node.js：>= 20（仅安装器需要）。
 - 平台：Windows 优先（安装器面向 Windows），Web/桌面客户端均可加载。
 - 已知问题：主题包与个人页依赖 DSH 的公开槽位与 `data-*` 标记；宿主大版本升级后可能需要适配，见 [维护文档](docs/maintenance/)。
 
-## 第三方与许可
+## 开源许可与历史来源
 
 - 本项目代码：MIT，见 `LICENSE`。
-- 上游 [DSH-Codex-Style](https://github.com/xinxing1708/DSH-Codex-Style)：MIT，保留其代码、CHANGELOG 历史与署名。
+- 上游 [DSH-Codex-Style](https://github.com/xinxing1708/DSH-Codex-Style)：MIT，本项目的历史代码来源之一，按 MIT 许可保留版权声明与署名。
 - 主题包数据：[dsh-theme](https://github.com/mux9056-bot/dsh-theme) 1.0.1，Apache-2.0，见 `licenses/dsh-theme-LICENSE`。
 - DSH 品牌图：DeepSeek Harness 项目，MIT，见 `licenses/DeepSeek-Harness-LICENSE`。
 - 完整说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
@@ -99,8 +93,8 @@ node --test --test-isolation=none scripts/test-client.mjs   # 示例：单文件
 - 维护策略（分支、版本、上游修复选择性同步）见 [docs/maintenance/02-versioning.md](docs/maintenance/02-versioning.md) 与 [03-upstream-sync.md](docs/maintenance/03-upstream-sync.md)。
 - 提交前请运行构建与测试；涉及界面改动请附截图。
 
-## 致谢
+## 致谢与历史贡献
 
-- 上游作者 [@xinxing1708](https://github.com/xinxing1708) 与 [DSH-Codex-Style](https://github.com/xinxing1708/DSH-Codex-Style) 的全部基础工作；
+- [@xinxing1708](https://github.com/xinxing1708) 与 [DSH-Codex-Style](https://github.com/xinxing1708/DSH-Codex-Style) 的历史基础代码贡献；
 - [dsh-theme](https://github.com/mux9056-bot/dsh-theme) 主题数据；
 - DeepSeek Harness 项目与其 UI 契约。
