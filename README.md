@@ -1,100 +1,78 @@
+<div align="center">
+
 # DSH Codex Style Enhanced
 
-> 面向 DeepSeek Harness（DSH）的独立开源界面增强插件，以 Codex 桌面端风格为基础，提供更完整的外观定制、个人主页与工作台体验。
+**为 DeepSeek Harness 打造更完整的桌面工作体验。**
 
-[下载最新版](https://github.com/zianyx6/DSH-Codex-Style/releases) · [问题反馈](https://github.com/zianyx6/DSH-Codex-Style/issues) · [更新日志](CHANGELOG.md)
+Codex 风格界面 · 个性化外观 · 个人主页 · Remote 工作台
 
-![首页](assets/screenshots/01-home.png)
+[English](README.en.md) · [下载](https://github.com/zianyx6/DSH-Codex-Style/releases) · [使用指南](docs/user-guide.md) · [更新日志](CHANGELOG.md) · [问题反馈](https://github.com/zianyx6/DSH-Codex-Style/issues)
 
-## 项目定位
+![MIT License](https://img.shields.io/badge/license-MIT-555555)
+![DSH 0.2.x](https://img.shields.io/badge/DSH-0.2.x-555555)
 
-DSH Codex Style Enhanced 由 [@zianyx6](https://github.com/zianyx6) 独立开发与维护。自 1.0.0 起，采用独立的插件标识、安装目录、版本规划与发布流程，后续功能开发和问题处理均由本项目负责。
+</div>
 
-项目注重桌面端交互体验、视觉一致性与个性化配置，在保留 Codex 风格的基础上，提供 30 套主题配色、细粒度外观设置、个人主页及 Remote 工作台适配。
+![主界面](assets/screenshots/01-home.png)
 
-本项目并非 DeepSeek 或 OpenAI 官方产品。历史代码来源及第三方许可见文末；原项目作者不参与本项目的维护，也不负责本项目的技术支持。
+## 核心体验
 
-## 功能
+| 功能 | 介绍 |
+| --- | --- |
+| 桌面工作区 | Codex 风格导航、可收起侧栏、项目与会话管理、模型及权限控制。 |
+| 个性化外观 | 内置 30 套主题配色，支持明暗模式、自定义颜色、字体、界面密度与侧栏宽度。 |
+| 个人主页 | 查看账号余额、会话统计、近 12 个月活动热力图，并快速进入平台用量页面。 |
+| Remote 适配 | 统一 IDE 工作台、文件树、编辑器及弹窗的布局与视觉风格。 |
+| 对话体验 | 回合耗时、过程折叠、流式显示、Markdown 与代码块优化。 |
 
-- **主题界面**：Codex 风格的导航、可收起侧栏和输入区；项目/会话搜索与管理、模型和权限选择、思考强度滑条与 MAX 动效、运行/完成提示。
-- **浅色 / 深色**：随 DSH 外观设置切换；选择跟随系统时同步系统变化。
-- **内置主题包**：来自 [dsh-theme](https://github.com/mux9056-bot/dsh-theme) 的 30 套配色（Apache-2.0），无需再装第三个插件。
-- **设置 → 外观**：模式（浅色/深色/跟随系统）、Codex 风格预设（Rose Pine / Nord / Solarized / Tokyo Night / Gruvbox / Catppuccin / Dracula / One Dark / GitHub 等）、强调色/背景/前景、字体、界面密度、侧栏宽度；「DeepSeek 默认」作为默认预设项。
-- **个人主页**：账号昵称、充值/赠送余额、会话总数、活跃与连续天数、近 12 个月会话活动热力图，以及 Token 消耗 / 使用峰值 / 任务用时 / 消费金额（后四项由平台统计，页面提供平台用量页入口，不推算金额）。
-- **Remote 兼容层**：`dsh-remote` 的 IDE 工作台从一级导航右侧开始，顶栏/文件树/编辑器表面与主题一致，弹窗层级高于本插件浮层。
-- **正文效果**：回合耗时、过程收起、流式平滑、工具调用状态与完整 Markdown/代码块。
-- **可选组件**：Codex 工作规范提示词（默认关闭）、页面前进后退（默认开启）、图片批注（默认开启）。
-
-## 截图
+## 界面预览
 
 <p align="center">
-  <img src="assets/screenshots/01-home.png" width="48%" alt="首页：新对话" />
   <img src="assets/screenshots/02-profile.png" width="48%" alt="个人主页" />
+  <img src="assets/screenshots/03-appearance-themes.png" width="48%" alt="主题选择" />
 </p>
-<p align="center"><sub>左：首页（新对话）　右：个人主页</sub></p>
+<p align="center"><sub>个人主页 · 主题选择</sub></p>
 
 <p align="center">
-  <img src="assets/screenshots/04-appearance.png" width="48%" alt="设置 → 外观：模式与界面" />
-  <img src="assets/screenshots/03-appearance-themes.png" width="48%" alt="设置 → 外观：主题与主题包" />
+  <img src="assets/screenshots/04-appearance.png" width="85%" alt="外观设置" />
 </p>
-<p align="center"><sub>左：外观 — 模式 / 界面密度 / 侧栏宽度　右：外观 — 预设与 30 套主题包</sub></p>
+<p align="center"><sub>外观设置</sub></p>
 
-## 安装
+## 快速开始
 
-### 方式一：DSH 插件页
+**Windows ZIP 安装（推荐）**
 
-在 DSH「自定义 → 插件 → 添加插件」中输入增强版包名 `@zianyx6/dsh-codex-style-enhanced`（发布后可用），或从 [Releases](https://github.com/zianyx6/DSH-Codex-Style/releases) 下载 ZIP。
-
-### 方式二：Windows ZIP（推荐）
-
-1. 从 [Releases](https://github.com/zianyx6/DSH-Codex-Style/releases) 下载 `dsh-codex-style-enhanced-*.zip`；
-2. **完全退出 DSH**；
-3. 解压后运行 `install.cmd`（需要 Node.js 20+）；
+1. 前往 [Releases](https://github.com/zianyx6/DSH-Codex-Style/releases)，下载增强版 ZIP。
+2. 完全退出 DSH，解压安装包。
+3. 运行 `install.cmd`（需要 Node.js 20 或更高版本）。
 4. 重新启动 DSH。
 
-两个插件不可同时启用。安装器会写入独立受管目录 `dsh-codex-style-enhanced/`（原版使用 `dsh-codex-style/`），检测到原版已安装时会停止并提示先卸载原版。
+插件包名：`@zianyx6/dsh-codex-style-enhanced`。待包发布至对应注册表后，也可通过 DSH 插件页安装。
 
-## 从旧版 Codex Style 迁移
+| 环境 | 要求 |
+| --- | --- |
+| DSH | `>=0.2.1-rc.2 <0.3.0-0` |
+| Node.js | 20+（安装器） |
+| 平台 | Windows 安装器；Web 与桌面客户端加载 |
 
-1. 记下你需要的设置（通常无需操作，增强版沿用 `dsh-codex-style:*` 本地存储键）；
-2. 在 DSH 插件页卸载原版 `@xinxing1708/dsh-codex-style`，退出 DSH；
-3. 按上面的方式安装增强版并重启；
-4. 主题、外观、侧栏宽度等设置会自动沿用；如未生效，在设置 → 外观里重新选择一次即可。
+> 兼容范围表示允许安装与加载，不代表所有宿主版本均已实机验证。请勿与旧版 Codex Style 同时启用。
 
-## 更新与回滚
+旧版迁移、更新、回滚及卸载说明见 [使用指南](docs/user-guide.md)。
 
-- **更新**：插件页更新，或下载新 ZIP 覆盖安装（安装器保留旧版本与回滚记录）。
-- **回滚**：`install.cmd` 安装的版本可用 `scripts/rollback.mjs`（安装器会打印用法）回退到上一版；插件页安装的版本可用 DSH 插件页卸载后重装旧版。
-- **卸载**：插件页卸载即可；`install.cmd` 安装的版本会清理自己写入的 profile 条目，不影响原版或用户配置。
-
-## 兼容性
-
-- DSH：`>=0.2.1-rc.2 <0.3.0-0`（0.3.0 及更高版本拒绝加载）。
-- Node.js：>= 20（仅安装器需要）。
-- 平台：Windows 优先（安装器面向 Windows），Web/桌面客户端均可加载。
-- 已知问题：主题包与个人页依赖 DSH 的公开槽位与 `data-*` 标记；宿主大版本升级后可能需要适配，见 [维护文档](docs/maintenance/)。
-
-## 开源许可与历史来源
-
-- 本项目代码：MIT，见 `LICENSE`。
-- 上游 [DSH-Codex-Style](https://github.com/xinxing1708/DSH-Codex-Style)：MIT，本项目的历史代码来源之一，按 MIT 许可保留版权声明与署名。
-- 主题包数据：[dsh-theme](https://github.com/mux9056-bot/dsh-theme) 1.0.1，Apache-2.0，见 `licenses/dsh-theme-LICENSE`。
-- DSH 品牌图：DeepSeek Harness 项目，MIT，见 `licenses/DeepSeek-Harness-LICENSE`。
-- 完整说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
-
-## 开发与贡献
+## 开发与反馈
 
 ```bash
-node scripts/build.mjs                     # 构建 lib/client.js
-node --test --test-isolation=none scripts/test-client.mjs   # 示例：单文件测试
+npm install
+npm run build
+npm test
 ```
 
-- 设计令牌在 `assets/tokens.css`，页面样式在 `src/*.css`，组件逻辑在 `src/*.js`。
-- 维护策略（分支、版本、上游修复选择性同步）见 [docs/maintenance/02-versioning.md](docs/maintenance/02-versioning.md) 与 [03-upstream-sync.md](docs/maintenance/03-upstream-sync.md)。
-- 提交前请运行构建与测试；涉及界面改动请附截图。
+- [问题反馈与功能建议](https://github.com/zianyx6/DSH-Codex-Style/issues)：建议附上 DSH 版本、插件版本、复现步骤及截图。
+- [维护文档](docs/maintenance/)：版本策略与兼容性维护。
+- [更新日志](CHANGELOG.md)：版本变更及历史记录。
 
-## 致谢与历史贡献
+## 关于项目
 
-- [@xinxing1708](https://github.com/xinxing1708) 与 [DSH-Codex-Style](https://github.com/xinxing1708/DSH-Codex-Style) 的历史基础代码贡献；
-- [dsh-theme](https://github.com/mux9056-bot/dsh-theme) 主题数据；
-- DeepSeek Harness 项目与其 UI 契约。
+DSH Codex Style Enhanced 自 1.0.0 起由 [@zianyx6](https://github.com/zianyx6) 独立维护，拥有独立插件标识、安装目录与发布流程。本项目不是 DeepSeek 或 OpenAI 官方产品；历史项目作者不负责本项目的维护与支持。
+
+项目采用 [MIT 许可证](LICENSE)。历史代码来自 [DSH-Codex-Style](https://github.com/xinxing1708/DSH-Codex-Style)，保留原版权声明；主题数据来自 dsh-theme，采用 Apache-2.0 许可。完整署名与许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
